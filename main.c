@@ -13,7 +13,7 @@ int ft_check_arg(int argc,char **argv)
     while (argv[i])
     {
         temp = ft_atoi(argv[i]);
-        
+        if(ft_isalnum(temp))
     }
 
 }

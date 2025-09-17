@@ -17,9 +17,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-int	ft_isalnum(int c)
+int	ft_isdigit(int c)
 {
-	if ((c > 64 && c < 91) || (c > 96 && c < 123) || (c > 47 && c < 58))
+	if (c < 58 && c > 47)
 	{
 		return (1);
 	}
