@@ -1,7 +1,7 @@
-int	ft_atoi(const char *nptr)
+long long int	ft_atoi(const char *nptr)
 {
-	int	sign;
-	int	num;
+	int	            sign;
+	long long int   num;
 
 	num = 0;
 	sign = 1;

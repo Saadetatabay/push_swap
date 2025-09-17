@@ -25,3 +25,37 @@ int	ft_isdigit(int c)
 	}
 	return (0);
 }
+
+int	ft_isnum(char *str)
+{
+    if(*str == '-' || *str == '+')
+        str++;
+    if(!*str)
+        return(0);
+    while(*str)
+    {
+        if(ft_isdigit(*str)==0)
+            return(0);
+        str++;
+    }
+    return (1);
+}
+
+int ft_dup(int indis,int num,char **argv)
+{
+    int i;
+
+    i = 0;
+    while(i < indis)
+    {
+        if (ft_atoi(argv[i]) == num)
+            return(0);
+        i++;
+    }
+    return (1);
+}
+
+void    ft_error()
+{
+    write(1,"error\n",6);
+}

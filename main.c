@@ -1,29 +1,34 @@
-#include<unistd.h>
-int ft_check_arg(int argc,char **argv)
-{
-    int i;
-    int temp;
+#include "push_swap.h"
 
-    i = 1;
-    if(argc == 2)
-    {
-        i = 0;
+void ft_check_arg(int argc,char **argv)
+{
+    int             i;
+    long long int   temp;
+
+    i = 0;
+    if (argc == 2)
         argv = ft_split(argv[1],' ');
-    }
+    else
+        argv = argv + 1;
     while (argv[i])
     {
+        if(!ft_isnum(argv[i]))
+            ft_error();
         temp = ft_atoi(argv[i]);
-        if(ft_isalnum(temp))
-    }
+        if (temp < INT_MIN || temp > INT_MAX)
+            ft_error();
+        temp = (int)temp;
+        if(!ft_dup(i,temp,argv))
+            ft_error();
+        i++;
+    }   
 
 }
 int main(int argc,char **argv)
 {
     if (argc == 1)
-        return(1); //argüman yok
+        ft_error(); //argüman yok
     if(argc == 2 && !*argv[1])
-        return(1); //string vermiş ama boş
-    if(!ft_check_arg(argc,argv)) //true false dönsün
-        return (1);
-    
+        ft_error(); //string vermiş ama boş
+    ft_check_arg(argc,argv);
 }
