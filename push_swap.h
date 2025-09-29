@@ -18,4 +18,5 @@ char	**ft_split(char const *s, char c);
 int	ft_atoi(const char *nptr);
 int	ft_isdigit(int c);
 int	ft_isnum(char *str);
+
 #endif

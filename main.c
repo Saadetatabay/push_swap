@@ -24,13 +24,37 @@ void ft_check_arg(int argc,char **argv)
     }   
 
 }
+
+void    stack_init(char **argv, t_node **my_stack)
+{
+    int i;
+    t_node  *current;
+
+    *my_stack = malloc(sizeof(t_node));
+    current = *my_stack;
+    i = 0;
+    while(argv[i])
+    {
+        current->veri = ft_atoi(argv[i]);
+        if(argv[i + 1])
+        {
+            current->next = malloc(sizeof(t_node));
+            current = current->next;
+        }
+        else
+            current->next = NULL;
+        i++;
+    }
+}
+
 int main(int argc,char **argv)
 {
     t_node  *stack_a;
+
     if (argc == 1)
         ft_error(); //argüman yok
     if(argc == 2 && !*argv[1])
         ft_error(); //string vermiş ama boş
     ft_check_arg(argc,argv);
-    stack_init(argc,argv);
+    stack_init(argv, &stack_a);
 }
