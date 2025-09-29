@@ -13,3 +13,15 @@ void    swap_firsttwo(t_node **stack)
     *(stack) = temp2;
     write(1,"sa\n",2);
 }
+
+void    push_atob(t_node **a, t_node **b)
+{
+    t_node  *temp;
+
+    if(!*a)
+        return ;
+    temp = *a;
+    *a = (*a)->next;
+    temp->next = *b;
+    *b = temp;
+}

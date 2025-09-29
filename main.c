@@ -60,3 +60,5 @@ int main(int argc,char **argv)
     num=ft_check_arg(argc,argv);
     stack_init(num, &stack_a);
 }
+//yorum
+
