@@ -1,31 +1,32 @@
 #include "push_swap.h"
 
-void ft_check_arg(int argc,char **argv)
+char    **ft_check_arg(int argc,char **argv)
 {
     int             i;
     long long int   temp;
+    char            **num;
 
     i = 0;
     if (argc == 2)
-        argv = ft_split(argv[1],' ');
+        num = ft_split(argv[1],' ');
     else
-        argv = argv + 1;
-    while (argv[i])
+        num = argv + 1;
+    while (num[i])
     {
-        if(!ft_isnum(argv[i]))
+        if(!ft_isnum(num[i]))
             ft_error();
-        temp = ft_atoi(argv[i]);
+        temp = ft_atoi(num[i]);
         if (temp < INT_MIN || temp > INT_MAX)
             ft_error();
         temp = (int)temp;
-        if(!ft_dup(i,temp,argv)) //aynı sayı iki defa verilmesin diye
+        if(!ft_dup(i,temp,num)) //aynı sayı iki defa verilmesin diye
             ft_error();
         i++;
     }   
-
+    return(num);
 }
 
-void    stack_init(char **argv, t_node **my_stack)
+void    stack_init(char **num, t_node **my_stack)
 {
     int i;
     t_node  *current;
@@ -33,10 +34,10 @@ void    stack_init(char **argv, t_node **my_stack)
     *my_stack = malloc(sizeof(t_node));
     current = *my_stack;
     i = 0;
-    while(argv[i])
+    while(num[i])
     {
-        current->veri = ft_atoi(argv[i]);
-        if(argv[i + 1])
+        current->value = ft_atoi(num[i]);
+        if(num[i + 1])
         {
             current->next = malloc(sizeof(t_node));
             current = current->next;
@@ -49,12 +50,13 @@ void    stack_init(char **argv, t_node **my_stack)
 
 int main(int argc,char **argv)
 {
+    char    **num;
     t_node  *stack_a;
 
     if (argc == 1)
         ft_error(); //argüman yok
     if(argc == 2 && !*argv[1])
         ft_error(); //string vermiş ama boş
-    ft_check_arg(argc,argv);
-    stack_init(argv, &stack_a);
+    num=ft_check_arg(argc,argv);
+    stack_init(num, &stack_a);
 }

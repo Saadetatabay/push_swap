@@ -55,7 +55,7 @@ int ft_dup(int indis,int num,char **argv)
     return (1);
 }
 
-void    ft_error()
+void    ft_error(void)
 {
     write(1,"error\n",6);
 }
