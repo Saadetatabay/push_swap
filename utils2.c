@@ -36,15 +36,15 @@ void    sort_three(t_node **stack)
     mid = (*stack)->next->value;
     bottom = (*stack)->next->next->value;
     if(top > mid && top > bottom)
-        add_head_to_tail(stack_a);
+        add_head_to_tail(stack);
     else if(top > mid)
-        swap_firsttwo(stack_a);
+        swap_firsttwo(stack);
     if(mid > bottom)
-        add_tail_to_head(stack_a); 
+        add_tail_to_head(stack); 
 
 }
 
-void    sort_stack(t_node **stack_a,t_node **stack_b, int size_a)
+void    sort_stack(t_node **stack_a,int size_a)
 {
     if (size_a == 2)
         swap_firsttwo(stack_a);
