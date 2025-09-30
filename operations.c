@@ -3,6 +3,7 @@
 void    swap_firsttwo(t_node **stack)
 {
     t_node  *temp;
+    t_node  *temp2;
 
     if(!*stack || !*(stack)->next)
         return;
@@ -24,4 +25,18 @@ void    push_atob(t_node **a, t_node **b)
     *a = (*a)->next;
     temp->next = *b;
     *b = temp;
+}
+
+void    add_head_to_tail(t_node **a)
+{
+    t_node  *temp;
+    t_node  *iter;
+
+    temp = *a;
+    iter = *a;
+    *a = *a->next;
+    while(iter->next)
+        iter = iter->next;
+    iter->next = temp;
+    temp->next = NULL;
 }
