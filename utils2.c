@@ -25,3 +25,29 @@ int ft_stack_size(t_node *stack)
     }
     return (ret);
 }
+
+void    sort_three(t_node **stack)
+{
+    int top;
+    int mid;
+    int bottom;
+
+    top = (*stack)->value;
+    mid = (*stack)->next->value;
+    bottom = (*stack)->next->next->value;
+    if(top > mid && top > bottom)
+        add_head_to_tail(stack_a);
+    else if(top > mid)
+        swap_firsttwo(stack_a);
+    if(mid > bottom)
+        add_tail_to_head(stack_a); 
+
+}
+
+void    sort_stack(t_node **stack_a,t_node **stack_b, int size_a)
+{
+    if (size_a == 2)
+        swap_firsttwo(stack_a);
+    if (size_a == 3)
+        sort_tree(stack_a);
+}
