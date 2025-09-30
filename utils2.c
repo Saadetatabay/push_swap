@@ -49,5 +49,7 @@ void    sort_stack(t_node **stack_a,int size_a)
     if (size_a == 2)
         swap_firsttwo(stack_a);
     if (size_a == 3)
-        sort_tree(stack_a);
+    {
+        sort_three(stack_a);
+    }
 }

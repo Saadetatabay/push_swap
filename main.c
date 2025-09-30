@@ -60,5 +60,5 @@ int main(int argc,char **argv)
     num=ft_check_arg(argc,argv);
     stack_init(num, &stack_a);
     if (!ft_check_sorted(stack_a))
-        sort_stack();
+        sort_stack(&stack_a,ft_stack_size(stack_a));
 }
