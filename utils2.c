@@ -12,3 +12,16 @@ int ft_check_sorted(t_node *stack)
     }
     return(1);
 }
+
+int ft_stack_size(t_node *stack)
+{
+    int ret;
+
+    ret = 0;
+    while(stack)
+    {
+        ret++;
+        stack = stack->next;
+    }
+    return (ret);
+}

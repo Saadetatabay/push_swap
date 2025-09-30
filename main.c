@@ -59,6 +59,6 @@ int main(int argc,char **argv)
         ft_error(); //string vermiş ama boş
     num=ft_check_arg(argc,argv);
     stack_init(num, &stack_a);
+    if (!ft_check_sorted(stack_a))
+        sort_stack();
 }
-//yorum
-
