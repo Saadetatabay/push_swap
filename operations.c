@@ -40,3 +40,25 @@ void    add_head_to_tail(t_node **a)
     iter->next = temp;
     temp->next = NULL;
 }
+
+void    add_tail_to_head(t_node **a)
+{
+    if(!*a || !(*a)->next)
+        return;
+    t_node  *temp;
+    t_node  *lst;
+    
+    temp = *a;
+    while(temp->next)
+    {
+        if(!temp->next->next)
+        {
+            lst = temp->next;
+            lst->next=*a;
+            temp->next = NULL;
+            break;
+        }
+        temp = temp->next;
+    }
+    *a = lst;
+}
