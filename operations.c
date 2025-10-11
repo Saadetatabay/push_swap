@@ -25,6 +25,20 @@ void    push_atob(t_node **a, t_node **b)
     *a = (*a)->next;
     temp->next = *b;
     *b = temp;
+    write(1,"pb\n",3);
+}
+
+void    push_btoa(t_node **b, t_node **a)
+{
+    t_node  *temp;
+
+    if(!*b)
+        return ;
+    temp = *b;
+    *b = (*b)->next;
+    temp->next = *a;
+    *a = temp;
+    write(1,"pa\n",3);
 }
 
 void    add_head_to_tail(t_node **a)
