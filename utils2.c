@@ -117,4 +117,6 @@ void    sort_stack(t_node **stack_a, t_node **stack_b, int size_a)
         sort_three(stack_a);
     else if (size_a <= 5)
         sort_four_five(stack_a, stack_b);
+    else
+        big_sort(stack_a, stack_b, size_a);
 }
