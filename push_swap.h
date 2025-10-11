@@ -16,17 +16,18 @@ typedef struct s_node
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	**ft_split(char const *s, char c);
-int	ft_atoi(const char *nptr);
-int	ft_isdigit(int c);
-int	ft_isnum(char *str);
+int	    ft_atoi(const char *nptr);
+int	    ft_isdigit(int c);
+int	    ft_isnum(char *str);
 void    ft_error();
-int ft_dup(int indis,int num,char **argv);
-int ft_check_sorted(t_node *stack);
-int ft_stack_size(t_node *stack);
+int     ft_dup(int indis,int num,char **argv);
+int     ft_check_sorted(t_node *stack);
+int     ft_stack_size(t_node *stack);
 void    sort_stack(t_node **stack_a, t_node **stack_b, int size_a);
 void    sort_three(t_node **stack);
 void    add_head_to_tail(t_node **a);
 void    swap_firsttwo(t_node **stack);
 void    push_atob(t_node **a, t_node **b);
+void    push_btoa(t_node **b, t_node **a);
 void    add_tail_to_head(t_node **a);
 #endif
