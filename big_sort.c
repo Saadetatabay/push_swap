@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   big_sort.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: satabay <satabay@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/12 13:39:40 by satabay           #+#    #+#             */
+/*   Updated: 2025/10/12 13:39:43 by satabay          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void    index_stack(t_node **stack)
@@ -50,10 +62,7 @@ void    big_sort(t_node **stack_a, t_node **stack_b, int size)
 
     i = 0;
     max_bits = ft_max_bits(size-1);
-    printf("max bit%d\n",max_bits);
-    printf("size%d\n",size);
     index_stack(stack_a);
-    printf("index stack sonrası ilk eleman %d\n",(*stack_a)->value);
     while (i < max_bits)
     {
 		j = 0;
@@ -69,7 +78,6 @@ void    big_sort(t_node **stack_a, t_node **stack_b, int size)
         print_stack(*stack_b);
         while (*stack_b)
             push_btoa(stack_b, stack_a);
-        printf("çıktı\n");
 		i++;
 	}
     print_stack(*stack_a);
