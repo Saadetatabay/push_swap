@@ -6,7 +6,7 @@
 /*   By: satabay <satabay@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 13:39:40 by satabay           #+#    #+#             */
-/*   Updated: 2025/10/12 13:39:43 by satabay          ###   ########.fr       */
+/*   Updated: 2025/10/12 15:18:48 by satabay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,8 @@ void    big_sort(t_node **stack_a, t_node **stack_b, int size)
                 add_head_to_tail(stack_a);
 			j++;
 		}
-        print_stack(*stack_b);
         while (*stack_b)
             push_btoa(stack_b, stack_a);
 		i++;
 	}
-    print_stack(*stack_a);
 }

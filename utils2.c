@@ -6,132 +6,133 @@
 /*   By: satabay <satabay@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 13:40:44 by satabay           #+#    #+#             */
-/*   Updated: 2025/10/12 13:40:46 by satabay          ###   ########.fr       */
+/*   Updated: 2025/10/12 15:13:40 by satabay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_check_sorted(t_node *stack)
+int	ft_check_sorted(t_node *stack)
 {
-    if (!stack->next)
-        return (1);
-    while(stack->next)
-    {
-        if(stack->value > stack->next->value)
-            return (0);
-        stack = stack->next;
-    }
-    return(1);
+	if (!stack->next)
+		return (1);
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
 
-int ft_stack_size(t_node *stack)
+int	ft_stack_size(t_node *stack)
 {
-    int ret;
+	int	ret;
 
-    ret = 0;
-    while(stack)
-    {
-        ret++;
-        stack = stack->next;
-    }
-    return (ret);
+	ret = 0;
+	while (stack)
+	{
+		ret++;
+		stack = stack->next;
+	}
+	return (ret);
 }
 
-void    sort_three(t_node **stack)
+void	sort_three(t_node **stack)
 {
-    int top;
-    int mid;
-    int bottom;
+	int	top;
+	int	mid;
+	int	bottom;
 
-    top = (*stack)->value;
-    mid = (*stack)->next->value;
-    bottom = (*stack)->next->next->value;
-    if (top < mid && mid > bottom)
-    {
-        add_tail_to_head(stack);
-        if ((*stack)->value > (*stack)->next->value)
-        {
-            swap_firsttwo(stack);
-        }
-    }
-    else if(top > mid && top > bottom && mid < bottom)
-        add_head_to_tail(stack);
-    else if(top > mid)
-    {
-        swap_firsttwo(stack);
-        if ((*stack)->next->value > (*stack)->next->next->value)
-            add_tail_to_head(stack);
-    }
+	top = (*stack)->value;
+	mid = (*stack)->next->value;
+	bottom = (*stack)->next->next->value;
+	if (top < mid && mid > bottom)
+	{
+		add_tail_to_head(stack);
+		if ((*stack)->value > (*stack)->next->value)
+		{
+			swap_firsttwo(stack);
+		}
+	}
+	else if (top > mid && top > bottom && mid < bottom)
+		add_head_to_tail(stack);
+	else if (top > mid)
+	{
+		swap_firsttwo(stack);
+		if ((*stack)->next->value > (*stack)->next->next->value)
+			add_tail_to_head(stack);
+	}
 }
 
-void    push_min_value_to_b(t_node **stack_a, t_node **stack_b)
+void	push_min_value_to_b(t_node **stack_a, t_node **stack_b)
 {
-    int     indeks;
-    t_node  *iter;
-    int     min;
-    int     i;
+	int		indeks;
+	t_node	*iter;
+	int		min;
+	int		i;
+	int		size;
 
-    i = 0;
-    indeks = 0;
-    iter = (*stack_a);
-    min = iter->value;
-    while (iter)
-    {
-        if (iter->value < min)
-        {
-            min = iter->value;
-            indeks = i;
-        }
-        iter = iter->next;
-        i++;
-    }
-    int size = ft_stack_size(*stack_a);
-    if (indeks <= size / 2)
-    {
-        while (indeks--)
-            add_head_to_tail(stack_a);
-    }
-    else
-    {
-        int steps = size - indeks;
-        while (steps--)
-        {
-            add_tail_to_head(stack_a);
-        }
-    }
-    push_atob(stack_a, stack_b);
+	i = 0;
+	indeks = 0;
+	iter = (*stack_a);
+	min = iter->value;
+	while (iter)
+	{
+		if (iter->value < min)
+		{
+			min = iter->value;
+			indeks = i;
+		}
+		iter = iter->next;
+		i++;
+	}
+	size = ft_stack_size(*stack_a);
+	if (indeks <= (size -1) / 2)
+	{
+		while (indeks--)
+			add_head_to_tail(stack_a);
+	}
+	else
+	{
+		while (indeks < size)
+		{
+			add_tail_to_head(stack_a);
+			indeks++;
+		}
+	}
+	push_atob(stack_a, stack_b);
 }
 
-void    sort_four_five(t_node **stack_a, t_node **stack_b)
+void sort_four_five(t_node **stack_a, t_node **stack_b)
 {
-   if (ft_stack_size(*stack_a) == 4)
-   {
-        push_min_value_to_b(stack_a, stack_b);
-        sort_three(stack_a);
-        push_atob(stack_b, stack_a);
-   }
-   else
-   {
-        push_min_value_to_b(stack_a, stack_b);
-        push_min_value_to_b(stack_a, stack_b);
-        sort_three(stack_a);
-        push_atob(stack_b, stack_a);
-        push_atob(stack_b, stack_a);
-   }
+	if (ft_stack_size(*stack_a) == 4)
+	{
+		push_min_value_to_b(stack_a, stack_b);
+		sort_three(stack_a);
+		push_atob(stack_b, stack_a);
+	}
+	else
+	{
+		push_min_value_to_b(stack_a, stack_b);
+		push_min_value_to_b(stack_a, stack_b);
+		sort_three(stack_a);
+		push_atob(stack_b, stack_a);
+		push_atob(stack_b, stack_a);
+	}
 }
 
-void    sort_stack(t_node **stack_a, t_node **stack_b, int size_a)
+void sort_stack(t_node **stack_a, t_node **stack_b, int size_a)
 {
-    if (size_a <= 2)
-        swap_firsttwo(stack_a);
-    else if (size_a <= 3)
-        sort_three(stack_a);
-    else if (size_a <= 5)
-        sort_four_five(stack_a, stack_b);
-    else
-    {
-        printf("big sort öncesi ilk eleman %d",(*stack_a)->value);
-        big_sort(stack_a, stack_b, size_a);
-    }
+	if (size_a <= 2)
+		swap_firsttwo(stack_a);
+	else if (size_a <= 3)
+		sort_three(stack_a);
+	else if (size_a <= 5)
+		sort_four_five(stack_a, stack_b);
+	else
+	{
+		//printf("big sort öncesi ilk eleman %d", (*stack_a)->value);
+		big_sort(stack_a, stack_b, size_a);
+	}
 }

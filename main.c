@@ -6,7 +6,7 @@
 /*   By: satabay <satabay@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 13:40:12 by satabay           #+#    #+#             */
-/*   Updated: 2025/10/12 13:40:14 by satabay          ###   ########.fr       */
+/*   Updated: 2025/10/12 15:19:47 by satabay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int main(int argc,char **argv)
         ft_error(); //argüman yok
     if(argc == 2 && !*argv[1])
         ft_error(); //string vermiş ama boş
-    num=ft_check_arg(argc,argv);
+    num = ft_check_arg(argc,argv);
     stack_init(num, &stack_a);
     if (!ft_check_sorted(stack_a))
         sort_stack(&stack_a, &stack_b, ft_stack_size(stack_a));
