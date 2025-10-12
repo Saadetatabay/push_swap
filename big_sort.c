@@ -1,23 +1,23 @@
 #include "push_swap.h"
 
-void    index_stack(t_node *stack)
+void    index_stack(t_node **stack)
 {
     int     index;
     t_node  *pt;
     t_node  *pt2;
 
-    pt = stack;
+    pt = *stack;
     while(pt)
     {
         index = 0;
-        pt2 = stack;
+        pt2 = *stack;
         while(pt2)
         {
             if (pt2->value < pt->value)
                 index++;
             pt2 = pt2->next;
         }
-        pt->value = index;
+        pt->index = index;
         pt = pt->next;
     }
 }
@@ -32,6 +32,16 @@ int ft_max_bits(int max)
     return (max_bit);
 }
 
+void    print_stack(t_node *stack)
+{
+    while (stack)
+    {
+        printf("%d -> ", stack->value);
+        stack = stack->next;
+    }
+    printf("NULL\n");
+}
+
 void    big_sort(t_node **stack_a, t_node **stack_b, int size)
 {
     int max_bits;
@@ -40,18 +50,27 @@ void    big_sort(t_node **stack_a, t_node **stack_b, int size)
 
     i = 0;
     max_bits = ft_max_bits(size-1);
+    printf("max bit%d\n",max_bits);
+    printf("size%d\n",size);
     index_stack(stack_a);
-    while (max_bits)
+    printf("index stack sonrası ilk eleman %d\n",(*stack_a)->value);
+    while (i < max_bits)
     {
 		j = 0;
+        size = ft_stack_size(*stack_a);
 		while (j < size)
 		{
-			if (((*stack_a)->index >> i) & 1 == 0)
+			if ((((*stack_a)->index >> i) & 1 ) == 0)
 				push_atob(stack_a, stack_b);
 			else
-				add_head_to_tail(stack_a);
+                add_head_to_tail(stack_a);
 			j++;
 		}
-		max_bits--;
+        print_stack(*stack_b);
+        while (*stack_b)
+            push_btoa(stack_b, stack_a);
+        printf("çıktı\n");
+		i++;
 	}
+    print_stack(*stack_a);
 }

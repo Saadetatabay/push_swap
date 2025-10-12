@@ -33,5 +33,6 @@ void    push_btoa(t_node **b, t_node **a);
 void    add_tail_to_head(t_node **a);
 void    big_sort(t_node **stack_a, t_node **stack_b, int size);
 int     ft_max_bits(int max);
-void    index_stack(t_node *stack);
+void    index_stack(t_node **stack);
+void    print_stack(t_node *stack);
 #endif

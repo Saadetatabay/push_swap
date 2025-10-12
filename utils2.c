@@ -118,5 +118,8 @@ void    sort_stack(t_node **stack_a, t_node **stack_b, int size_a)
     else if (size_a <= 5)
         sort_four_five(stack_a, stack_b);
     else
+    {
+        printf("big sort öncesi ilk eleman %d",(*stack_a)->value);
         big_sort(stack_a, stack_b, size_a);
+    }
 }

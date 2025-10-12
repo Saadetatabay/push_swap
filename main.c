@@ -54,6 +54,8 @@ int main(int argc,char **argv)
     t_node  *stack_a;
     t_node  *stack_b;
 
+    stack_a = NULL;
+    stack_b = NULL;
     if (argc == 1)
         ft_error(); //argüman yok
     if(argc == 2 && !*argv[1])
